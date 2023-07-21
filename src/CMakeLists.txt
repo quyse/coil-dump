@@ -25,7 +25,20 @@ target_link_libraries(example_render_fonts
   coil_core_sdl_vulkan
   coil_core_vulkan
 )
-list(APPEND coil_dump_examples example_render_fonts)
+list(APPEND coil_dump_executables example_render_fonts)
+
+add_executable(test_webm
+  test_webm.cpp
+)
+target_link_libraries(test_webm
+  coil_core_asset
+  coil_core_av1
+  coil_core_entrypoint_console
+  coil_core_fs
+  coil_core_image_png
+  coil_core_webm
+)
+list(APPEND coil_dump_executables test_webm)
 
 # installation
-install(TARGETS ${coil_dump_examples})
+install(TARGETS ${coil_dump_executables})

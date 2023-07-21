@@ -1,5 +1,8 @@
 { pkgs
 , coil
+, lib ? pkgs.lib
+, fixedsFile ? ./fixeds.json
+, fixeds ? lib.importJSON fixedsFile
 }:
 
 rec {
@@ -14,6 +17,17 @@ rec {
       coil.core.nixos-pkgs.clang
     ];
   });
+  coil-dump-nixos-test = pkgs.runCommand "coil-dump-nixos-test" {} ''
+    set -eu
+    mkdir $out
+    cd $out
+    ln -s ${assets} assets
+    for i in ${coil-dump-nixos}/bin/test_*
+    do
+      echo $i
+      $i
+    done
+  '';
 
   coil-dump-ubuntu = pkgs.vmTools.runInLinuxImage ((pkgs.callPackage ./coil-dump.nix {
     inherit (coil.core.ubuntu-pkgs) coil-core;
@@ -51,6 +65,19 @@ rec {
     };
   });
   coil-dump-windows = windows-pkgs.coil-dump;
+  coil-dump-windows-test = pkgs.runCommand "coil-dump-windows-test" {} ''
+    set -eu
+    export PATH=${coil.toolchain-windows.wine}/bin:$PATH
+    ${coil.toolchain-windows.initWinePrefix}
+    mkdir $out
+    cd $out
+    ln -s ${assets} assets
+    for i in ${coil-dump-windows}/bin/test_*
+    do
+      echo $i
+      wine64 $i
+    done
+  '';
 
   assets = let
     font = file: {
@@ -60,18 +87,49 @@ rec {
         path = file;
       };
     };
-  in {
-    example_render_fonts = pkgs.writeText "example_render_fonts.json" (builtins.toJSON {
-      fontArabic = font "${coil.stuff.fonts.vazirmatn}/share/fonts/Vazirmatn[wght].ttf";
-      fontDevanagari = font "${coil.stuff.fonts.poppins}/share/fonts/Poppins-VariableFont_wght.otf";
-      fontHan = font "${coil.stuff.fonts.source_han_sans}/share/fonts/SourceHanSans-VF.otf";
-      fontHebrew = font "${coil.stuff.fonts.noto_sans_hebrew}/share/fonts/NotoSansHebrew[wght].ttf";
-      fontLatinGreekCyrillic = font "${coil.stuff.fonts.roboto_flex}/share/fonts/RobotoFlex[GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght].ttf";
-      fontThai = font "${coil.stuff.fonts.noto_sans_thai}/share/fonts/NotoSansThai[wght].ttf";
-    });
-  };
+  in pkgs.linkFarm "assets" [
+    {
+      name = "example_render_fonts.json";
+      path = pkgs.writeText "example_render_fonts.json" (builtins.toJSON {
+        fontArabic = font "${coil.stuff.fonts.vazirmatn}/share/fonts/Vazirmatn[wght].ttf";
+        fontDevanagari = font "${coil.stuff.fonts.poppins}/share/fonts/Poppins-VariableFont_wght.otf";
+        fontHan = font "${coil.stuff.fonts.source_han_sans}/share/fonts/SourceHanSans-VF.otf";
+        fontHebrew = font "${coil.stuff.fonts.noto_sans_hebrew}/share/fonts/NotoSansHebrew[wght].ttf";
+        fontLatinGreekCyrillic = font "${coil.stuff.fonts.roboto_flex}/share/fonts/RobotoFlex[GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght].ttf";
+        fontThai = font "${coil.stuff.fonts.noto_sans_thai}/share/fonts/NotoSansThai[wght].ttf";
+      });
+    }
+    {
+      name = "test_webm.json";
+      path = pkgs.writeText "test_webm.json" (builtins.toJSON {
+        webm = {
+          loader = "file";
+          path = pkgs.runCommand "av1.webm" {} ''
+            ${pkgs.ffmpeg_6-full}/bin/ffmpeg -i ${pkgs.fetchurl {
+              inherit (fixeds.fetchurl."https://upload.wikimedia.org/wikipedia/commons/transcoded/2/20/Juno%27s_Perijove-05_Jupiter_Flyby%2C_Reconstructed_in_125-Fold_Time-Lapse%2C_Revised.webm/Juno%27s_Perijove-05_Jupiter_Flyby%2C_Reconstructed_in_125-Fold_Time-Lapse%2C_Revised.webm.1080p.vp9.webm") name url sha256;
+              meta.license = lib.licenses.cc-by-30;
+            }} -c:v libsvtav1 $out
+          '';
+        };
+        video = {
+          loader = "av1";
+          source = {
+            loader = "webm_track";
+            source = "webm";
+            type = "Video";
+          };
+        };
+      });
+    }
+  ];
 
   touch = {
-    inherit coil-dump-nixos coil-dump-ubuntu coil-dump-windows;
-  } // assets;
+    inherit
+      coil-dump-nixos coil-dump-nixos-test
+      coil-dump-ubuntu
+      coil-dump-windows coil-dump-windows-test
+      assets
+    ;
+    autoUpdateScript = coil.toolchain.autoUpdateFixedsScript fixedsFile;
+  };
 }
