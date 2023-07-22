@@ -27,6 +27,17 @@ target_link_libraries(example_render_fonts
 )
 list(APPEND coil_dump_executables example_render_fonts)
 
+add_executable(test_unicode
+  test_unicode.cpp
+)
+target_link_libraries(test_unicode
+  coil_core_asset
+  coil_core_entrypoint_console
+  coil_core_fs
+  coil_core_unicode
+)
+list(APPEND coil_dump_executables test_unicode)
+
 add_executable(test_webm
   test_webm.cpp
 )

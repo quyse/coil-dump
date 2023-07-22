@@ -10,7 +10,7 @@ using namespace Coil;
 
 COIL_META_STRUCT(Assets)
 {
-  COIL_META_STRUCT_FIELD(Coil::VideoStreamSource*, video);
+  COIL_META_STRUCT_FIELD(VideoStreamSource*, video);
 };
 
 int COIL_ENTRY_POINT(std::vector<std::string>&& args)

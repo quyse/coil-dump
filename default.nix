@@ -65,9 +65,12 @@ rec {
     };
   });
   coil-dump-windows = windows-pkgs.coil-dump;
-  coil-dump-windows-test = pkgs.runCommand "coil-dump-windows-test" {} ''
+  coil-dump-windows-test = pkgs.runCommand "coil-dump-windows-test" {
+    nativeBuildInputs = [
+      coil.toolchain-windows.wine
+    ];
+  } ''
     set -eu
-    export PATH=${coil.toolchain-windows.wine}/bin:$PATH
     ${coil.toolchain-windows.initWinePrefix}
     mkdir $out
     cd $out
@@ -98,6 +101,35 @@ rec {
         fontLatinGreekCyrillic = font "${coil.stuff.fonts.roboto_flex}/share/fonts/RobotoFlex[GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght].ttf";
         fontThai = font "${coil.stuff.fonts.noto_sans_thai}/share/fonts/NotoSansThai[wght].ttf";
       });
+    }
+    {
+      name = "test_unicode.json";
+      path = pkgs.writeText "test_unicode.json" (builtins.toJSON (let
+        quickbrown = pkgs.fetchurl {
+          inherit (fixeds.fetchurl."https://www.cl.cam.ac.uk/~mgk25/ucs/examples/quickbrown.txt") url name sha256;
+        };
+      in {
+        utf8 = {
+          loader = "file";
+          path = quickbrown;
+        };
+        utf16 = {
+          loader = "file";
+          path = pkgs.runCommand "utf16.txt" {
+            nativeBuildInputs = [pkgs.glibc];
+          } ''
+            iconv -f utf8 -t utf16le < ${quickbrown} > $out
+          '';
+        };
+        utf32 = {
+          loader = "file";
+          path = pkgs.runCommand "utf32.txt" {
+            nativeBuildInputs = [pkgs.glibc];
+          } ''
+            iconv -f utf8 -t utf32le < ${quickbrown} > $out
+          '';
+        };
+      }));
     }
     {
       name = "test_webm.json";

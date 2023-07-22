@@ -6,6 +6,13 @@
       "name": "Juno_s_Perijove-05_Jupiter_Flyby__Reconstructed_in_125-Fold_Time-Lapse__Revised.webm.1080p.vp9.webm",
       "sha256": "13ffvx0bkj4skbv82yjbmk3r4x05zq0fdhlll45504pabn48xzl2",
       "url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/2/20/Juno%27s_Perijove-05_Jupiter_Flyby%2C_Reconstructed_in_125-Fold_Time-Lapse%2C_Revised.webm/Juno%27s_Perijove-05_Jupiter_Flyby%2C_Reconstructed_in_125-Fold_Time-Lapse%2C_Revised.webm.1080p.vp9.webm"
+    },
+    "https://www.cl.cam.ac.uk/~mgk25/ucs/examples/quickbrown.txt": {
+      "etag": "\"12e1-4bd67cde6c8b7\"",
+      "last-modified": "Wed, 11 Apr 2012 14:10:40 GMT",
+      "name": "quickbrown.txt",
+      "sha256": "0bnncy8z1inc85hif7vklvgj8xb55cn3wp4caf0db070bdd38889",
+      "url": "https://www.cl.cam.ac.uk/~mgk25/ucs/examples/quickbrown.txt"
     }
   }
 }
