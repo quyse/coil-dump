@@ -78,7 +78,7 @@ rec {
     for i in ${coil-dump-windows}/bin/test_*
     do
       echo $i
-      wine64 $i
+      wine $i
     done
   '';
 
