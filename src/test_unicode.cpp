@@ -31,7 +31,7 @@ static bool IsBufferEqual(Buffer const& a, Buffer const& b)
   return r == 0;
 }
 
-int COIL_ENTRY_POINT(std::vector<std::string>&& args)
+int COIL_ENTRY_POINT(std::vector<std::string> args)
 {
   Book book;
   TaskEngine::GetInstance().AddThread();

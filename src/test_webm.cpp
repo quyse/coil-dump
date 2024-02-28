@@ -13,7 +13,7 @@ COIL_META_STRUCT(Assets)
   COIL_META_STRUCT_FIELD(VideoStreamSource*, video);
 };
 
-int COIL_ENTRY_POINT(std::vector<std::string>&& args)
+int COIL_ENTRY_POINT(std::vector<std::string> args)
 {
   Book book;
   TaskEngine::GetInstance().AddThread();

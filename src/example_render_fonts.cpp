@@ -21,7 +21,7 @@ COIL_META_STRUCT(Assets)
   COIL_META_STRUCT_FIELD(FontSource*, fontThai);
 };
 
-int COIL_ENTRY_POINT(std::vector<std::string>&& args)
+int COIL_ENTRY_POINT(std::vector<std::string> args)
 {
   AppIdentity::GetInstance().Name() = "coil_dump_example_render_fonts";
 
