@@ -107,6 +107,11 @@ int COIL_ENTRY_POINT(std::vector<std::string> args)
       fontLatinGreekCyrillic,
     },
     {
+      Localization<Language::Bulgarian>::info,
+      "Bсички хора се раждат свободни и равни по достойнство и права. Tе са надарени с разум и съвест и следва да се отнасят помежду си в дух на братство.",
+      fontLatinGreekCyrillic,
+    },
+    {
       Localization<Language::ChineseSimplified>::info,
       "人人生而自由,在尊严和权利上一律平等。他们赋有理性和良心,并应以兄弟关系的精神互相对待。",
       fontHan,
@@ -117,8 +122,28 @@ int COIL_ENTRY_POINT(std::vector<std::string> args)
       fontHan,
     },
     {
+      Localization<Language::Czech>::info,
+      "Všichni lidé rodí se svobodní a sobě rovní co do důstojnosti a práv. Jsou nadáni rozumem a svědomím a mají spolu jednat v duchu bratrství.",
+      fontLatinGreekCyrillic,
+    },
+    {
+      Localization<Language::Danish>::info,
+      "Alle mennesker er født frie og lige i værdighed og rettigheder. De er udstyret med fornuft og samvittighed, og de bør handle mod hverandre i en broderskabets ånd.",
+      fontLatinGreekCyrillic,
+    },
+    {
+      Localization<Language::Dutch>::info,
+      "Alle mensen worden vrij en gelijk in waardigheid en rechten geboren. Zij zijn begiftigd met verstand en geweten, en behoren zich jegens elkander in een geest van broederschap te gedragen.",
+      fontLatinGreekCyrillic,
+    },
+    {
       Localization<Language::English>::info,
       "All human beings are born free and equal in dignity and rights. They are endowed with reason and conscience and should act towards one another in a spirit of brotherhood.",
+      fontLatinGreekCyrillic,
+    },
+    {
+      Localization<Language::Finnish>::info,
+      "Kaikki ihmiset syntyvät vapaina ja tasavertaisina arvoltaan ja oikeuksiltaan. Heille on annettu järki ja omatunto, ja heidän on toimittava toisiaan kohtaan veljeyden hengessä.",
       fontLatinGreekCyrillic,
     },
     {
@@ -132,6 +157,11 @@ int COIL_ENTRY_POINT(std::vector<std::string> args)
       fontLatinGreekCyrillic,
     },
     {
+      Localization<Language::Greek>::info,
+      "Όλοι οι άνθρωποι γεννιούνται ελεύθεροι και ίσοι στην αξιοπρέπεια και τα δικαιώματα. Είναι προικισμένοι με λογική και συνείδηση, και οφείλουν να συμπεριφέρονται μεταξύ τους με πνεύμα αδελφοσύνης.",
+      fontLatinGreekCyrillic,
+    },
+    {
       Localization<Language::Hebrew>::info,
       "כל בני האדם נולדו בני חורין ושווים בערכם ובזכויותיהם. כולם חוננו בתבונה ובמצפון, לפיכך חובה עליהם לנהוג איש ברעהו ברוח של אחווה.",
       fontHebrew,
@@ -140,6 +170,11 @@ int COIL_ENTRY_POINT(std::vector<std::string> args)
       Localization<Language::Hindi>::info,
       "सभी मनुष्यों को गौरव और अधिकारों के मामले में जन्मजात स्वतन्त्रता और समानता प्राप्त है। उन्हें बुद्धि और अन्तरात्मा की देन प्राप्त है और परस्पर उन्हें भाईचारे के भाव से बर्ताव करना चाहिए।",
       fontDevanagari,
+    },
+    {
+      Localization<Language::Hungarian>::info,
+      "Minden emberi lény szabadon születik és egyenlő méltósága és joga van. Az emberek, ésszel és lelkiismerettel bírván, egymással szemben testvéri szellemben kell hogy viseltessenek.",
+      fontLatinGreekCyrillic,
     },
     {
       Localization<Language::Italian>::info,
@@ -167,6 +202,11 @@ int COIL_ENTRY_POINT(std::vector<std::string> args)
       fontArabic,
     },
     {
+      Localization<Language::Polish>::info,
+      "Wszyscy ludzie rodzą się wolni i równi pod względem swej godności i swych praw. Są oni obdarzeni rozumem i sumieniem i powinni postępować wobec innych w duchu braterstwa.",
+      fontLatinGreekCyrillic,
+    },
+    {
       Localization<Language::Portuguese>::info,
       "Todos os seres humanos nascem livres e iguais em dignidade e em direitos. Dotados de razão e de consciência, devem agir uns para com os outros em espírito de fraternidade.",
       fontLatinGreekCyrillic,
@@ -177,8 +217,18 @@ int COIL_ENTRY_POINT(std::vector<std::string> args)
       fontLatinGreekCyrillic,
     },
     {
+      Localization<Language::Serbian>::info,
+      "Сва људска бића рађају се слободна и једнака у достојанству и правима. Она су обдарена разумом и свешћу и треба једни према другима да поступају у духу братства.",
+      fontLatinGreekCyrillic,
+    },
+    {
       Localization<Language::Spanish>::info,
       "Todos los seres humanos nacen libres e iguales en dignidad y derechos y, dotados como están de razón y conciencia, deben comportarse fraternalmente los unos con los otros.",
+      fontLatinGreekCyrillic,
+    },
+    {
+      Localization<Language::Swedish>::info,
+      "Alla människor äro födda fria och lika i värde och rättigheter. De äro utrustade med förnuft och samvete och böra handla gentemot varandra i en anda av broderskap.",
       fontLatinGreekCyrillic,
     },
     {
