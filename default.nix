@@ -37,6 +37,7 @@ rec {
       "-DCMAKE_CXX_COMPILER=clang++-${coil.core.ubuntu-pkgs.clangVersion}"
       "-DCMAKE_C_COMPILER=clang-${coil.core.ubuntu-pkgs.clangVersion}"
     ];
+    CMAKE_PREFIX_PATH = "${coil.core.ubuntu-pkgs.coil-core}";
     inherit (coil.core.ubuntu-pkgs) diskImage;
     diskImageFormat = "qcow2";
     memSize = 2048;
