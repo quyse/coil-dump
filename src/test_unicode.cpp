@@ -1,10 +1,13 @@
-#include <coil/assets.hpp>
-#include <coil/assets_struct.hpp>
-#include <coil/entrypoint.hpp>
-#include <coil/fs.hpp>
-#include <coil/unicode.hpp>
+#include <coil/util.hpp>
 #include <iostream>
-#include <cstring>
+
+import coil.core.assets.structs;
+import coil.core.assets;
+import coil.core.base;
+import coil.core.fs;
+import coil.core.json;
+import coil.core.tasks;
+import coil.core.unicode;
 
 using namespace Coil;
 

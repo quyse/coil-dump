@@ -6,17 +6,12 @@
 }:
 
 rec {
-  coil-dump-nixos = (pkgs.callPackage ./coil-dump.nix {
-    inherit (coil.core.nixos-pkgs) coil-core;
-  }).overrideAttrs (attrs: {
-    cmakeFlags = (attrs.cmakeFlags or []) ++ [
-      "-DCMAKE_CXX_COMPILER=clang++"
-      "-DCMAKE_C_COMPILER=clang"
-    ];
-    nativeBuildInputs = attrs.nativeBuildInputs ++ [
-      coil.core.nixos-pkgs.clang
-    ];
+  nixos-pkgs = coil.core.nixos-pkgs.extend (self: super: with self; {
+    coil-dump = self.coil.compile-cpp (callPackage ./coil-dump.nix {
+      coil-core = self.coil.core;
+    });
   });
+  coil-dump-nixos = nixos-pkgs.coil-dump;
   coil-dump-nixos-test = pkgs.runCommand "coil-dump-nixos-test" {} ''
     set -eu
     mkdir $out

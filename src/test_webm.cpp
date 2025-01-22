@@ -1,10 +1,17 @@
-#include <coil/assets.hpp>
-#include <coil/assets_struct.hpp>
-#include <coil/av1.hpp>
 #include <coil/entrypoint.hpp>
-#include <coil/fs.hpp>
-#include <coil/image_png.hpp>
-#include <coil/webm.hpp>
+#include <coil/util.hpp>
+
+import coil.core.assets.structs;
+import coil.core.assets;
+import coil.core.base;
+import coil.core.fs;
+import coil.core.image.format;
+import coil.core.image.png;
+import coil.core.json;
+import coil.core.media.webm;
+import coil.core.tasks;
+import coil.core.video.av1;
+import coil.core.video;
 
 using namespace Coil;
 

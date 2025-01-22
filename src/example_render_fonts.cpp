@@ -1,13 +1,25 @@
-#include <coil/appidentity.hpp>
-#include <coil/assets.hpp>
-#include <coil/assets_struct.hpp>
 #include <coil/entrypoint.hpp>
-#include <coil/fs.hpp>
-#include <coil/fthb.hpp>
-#include <coil/render_fonts.hpp>
-#include <coil/sdl.hpp>
-#include <coil/sdl_vulkan.hpp>
-#include <coil/vulkan.hpp>
+#include <coil/util.hpp>
+
+import coil.core.appidentity;
+import coil.core.assets.structs;
+import coil.core.assets;
+import coil.core.base;
+import coil.core.fonts.cache;
+import coil.core.fonts.fthb;
+import coil.core.fonts;
+import coil.core.fs;
+import coil.core.graphics;
+import coil.core.input;
+import coil.core.json;
+import coil.core.localization;
+import coil.core.math;
+import coil.core.platform;
+import coil.core.render.fonts;
+import coil.core.sdl.vulkan;
+import coil.core.sdl;
+import coil.core.tasks;
+import coil.core.vulkan;
 
 using namespace Coil;
 
