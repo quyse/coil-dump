@@ -155,7 +155,8 @@ rec {
     inherit
       coil-dump-nixos coil-dump-nixos-test
       coil-dump-ubuntu
-      coil-dump-windows coil-dump-windows-test
+      # broken with modules
+      # coil-dump-windows coil-dump-windows-test
       assets
     ;
     autoUpdateScript = coil.toolchain.autoUpdateFixedsScript fixedsFile;
