@@ -1,5 +1,5 @@
+#include <coil/base_meta.hpp>
 #include <coil/entrypoint.hpp>
-#include <coil/util.hpp>
 
 import coil.core.assets.structs;
 import coil.core.assets;
