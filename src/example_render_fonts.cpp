@@ -1,5 +1,6 @@
 #include <coil/base_meta.hpp>
 #include <coil/entrypoint.hpp>
+#include <variant>
 
 import coil.core.appidentity;
 import coil.core.assets.structs;
