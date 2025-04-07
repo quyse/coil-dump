@@ -58,6 +58,10 @@ rec {
         opus
         coil-core
       ];
+      postPatch = ''
+        sed -iE 's/cxx_std_26/cxx_std_23/' CMakeLists.txt
+        sed -iE 's/CMAKE_CXX_STANDARD 26/CMAKE_CXX_STANDARD 23/' CMakeLists.txt
+      '';
     };
   });
   coil-dump-windows = windows-pkgs.coil-dump;
@@ -155,8 +159,7 @@ rec {
     inherit
       coil-dump-nixos coil-dump-nixos-test
       coil-dump-ubuntu
-      # broken with modules
-      # coil-dump-windows coil-dump-windows-test
+      coil-dump-windows coil-dump-windows-test
       assets
     ;
     autoUpdateScript = coil.toolchain.autoUpdateFixedsScript fixedsFile;
