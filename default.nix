@@ -42,6 +42,7 @@ rec {
     coil-dump = mkCmakePkg {
       name = "coil-dump";
       inherit (coil-dump-nixos) src;
+      buildEnv = buildEnvWithModulesSupport;
       buildInputs = [
         nlohmann_json
         vulkan-headers
