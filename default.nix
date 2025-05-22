@@ -49,7 +49,7 @@ rec {
         vulkan-loader
         spirv-headers
         zstd
-        SDL2
+        sdl3
         zlib
         libpng
         sqlite
