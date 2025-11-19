@@ -9,7 +9,6 @@ import coil.core.image.format;
 import coil.core.image.png;
 import coil.core.json;
 import coil.core.media.webm;
-import coil.core.tasks;
 import coil.core.video.av1;
 import coil.core.video;
 
@@ -23,7 +22,6 @@ COIL_META_STRUCT(Assets)
 int COIL_ENTRY_POINT(std::vector<std::string> args)
 {
   Book book;
-  TaskEngine::GetInstance().AddThread();
 
   AssetManager assetManager =
   {
@@ -33,7 +31,7 @@ int COIL_ENTRY_POINT(std::vector<std::string> args)
   };
   assetManager.SetJsonContext(JsonFromBuffer(File::MapRead(book, "assets/test_webm.json")));
   Assets<AssetStructAdapter> assets;
-  assets.SelfLoad(book, assetManager).Get();
+  assets.SelfLoad(book, assetManager);
 
   auto& stream = assets.video->CreateStream(book);
 

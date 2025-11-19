@@ -19,7 +19,6 @@ import coil.core.platform;
 import coil.core.render.fonts;
 import coil.core.sdl.vulkan;
 import coil.core.sdl;
-import coil.core.tasks;
 import coil.core.vulkan;
 
 using namespace Coil;
@@ -52,7 +51,6 @@ int COIL_ENTRY_POINT(std::vector<std::string> args)
   });
   GraphicsDevice& graphicsDevice = graphicsSystem.CreateDefaultDevice(book);
 
-  TaskEngine::GetInstance().AddThread();
   AssetManager assetManager =
   {
     FileAssetLoader(),
@@ -60,7 +58,7 @@ int COIL_ENTRY_POINT(std::vector<std::string> args)
   };
   assetManager.SetJsonContext(JsonFromBuffer(File::MapRead(book, "example_render_fonts.json")));
   Assets<AssetStructAdapter> assets;
-  assets.SelfLoad(book, assetManager).Get();
+  assets.SelfLoad(book, assetManager);
 
   Book& graphicsBook = graphicsDevice.GetBook();
 

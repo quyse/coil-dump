@@ -6,7 +6,6 @@ import coil.core.assets;
 import coil.core.base;
 import coil.core.fs;
 import coil.core.json;
-import coil.core.tasks;
 import coil.core.unicode;
 
 using namespace Coil;
@@ -37,7 +36,6 @@ static bool IsBufferEqual(Buffer const& a, Buffer const& b)
 int COIL_ENTRY_POINT(std::vector<std::string> args)
 {
   Book book;
-  TaskEngine::GetInstance().AddThread();
 
   AssetManager assetManager =
   {
@@ -45,7 +43,7 @@ int COIL_ENTRY_POINT(std::vector<std::string> args)
   };
   assetManager.SetJsonContext(JsonFromBuffer(File::MapRead(book, "assets/test_unicode.json")));
   Assets<AssetStructAdapter> assets;
-  assets.SelfLoad(book, assetManager).Get();
+  assets.SelfLoad(book, assetManager);
 
   bool globalOk = true;
 
