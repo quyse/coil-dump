@@ -138,7 +138,7 @@ rec {
         webm = {
           loader = "file";
           path = pkgs.runCommand "av1.webm" {} ''
-            ${pkgs.ffmpeg_6-full}/bin/ffmpeg -i ${pkgs.fetchurl {
+            ${pkgs.ffmpeg-full}/bin/ffmpeg -i ${pkgs.fetchurl {
               inherit (fixeds.fetchurl."https://upload.wikimedia.org/wikipedia/commons/transcoded/2/20/Juno%27s_Perijove-05_Jupiter_Flyby%2C_Reconstructed_in_125-Fold_Time-Lapse%2C_Revised.webm/Juno%27s_Perijove-05_Jupiter_Flyby%2C_Reconstructed_in_125-Fold_Time-Lapse%2C_Revised.webm.1080p.vp9.webm") name url sha256;
               meta.license = lib.licenses.cc-by-30;
             }} -c:v libsvtav1 $out
