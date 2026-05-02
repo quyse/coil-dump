@@ -6,10 +6,10 @@
 }:
 
 rec {
-  nixos-pkgs = coil.core.nixos-pkgs.extend (self: super: with self; {
-    coil-dump = self.coil.compile-cpp (callPackage ./coil-dump.nix {
+  nixos-pkgs = coil.core.nixos-pkgs.extend (self: super: {
+    coil-dump = self.coil.callPackage ./coil-dump.nix {
       coil-core = self.coil.core;
-    });
+    };
   });
   coil-dump-nixos = nixos-pkgs.coil-dump;
   coil-dump-nixos-test = pkgs.runCommand "coil-dump-nixos-test" {} ''
